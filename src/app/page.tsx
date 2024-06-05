@@ -2,12 +2,12 @@
 
 import { useState } from 'react';
 
-const Home = () => {
+export default function Home() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
 
-  const handleSubmit = async (e: { preventDefault: () => void; }) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const response = await fetch('/api/submit', {
       method: 'POST',
@@ -48,6 +48,4 @@ const Home = () => {
       <button type="submit">送信</button>
     </form>
   );
-};
-
-export default Home;
+}
